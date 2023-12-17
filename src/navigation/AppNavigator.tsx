@@ -2,16 +2,23 @@ import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
+import SelectTeamScreen from '../screens/SelectTeamScreen/SelectTeamScreen';
+import { NavigationConstants } from './NavigationConstants';
+import { Provider } from 'react-redux';
+import store from '../store';
 
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name={NavigationConstants.HOME} component={HomeScreen} />
+          <Stack.Screen name={NavigationConstants.SELECT_TEAM} component={SelectTeamScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 
