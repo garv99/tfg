@@ -6,8 +6,11 @@ import CustomButton from '../../components/CustomButton/CustomButton'
 import SelectTeamModal from '../../components/SelectTeamModal/SelectTeamModal'
 import { useSelector } from 'react-redux'
 import { TeamState } from '../../reducers/teamReducer'
+import { NavigationConstants } from '../../navigation/NavigationConstants'
+import { useNavigation } from '@react-navigation/native'
 
 const SelectTeamScreen = () => {
+    const navigation: any = useNavigation();
     // Reducers
     const teamReducer: TeamState = useSelector((state: any) => state.teamReducer);
     //0 for team A and 1 for team B
@@ -63,7 +66,7 @@ const SelectTeamScreen = () => {
             }
             <Text>{teamReducer?.teamB?.name?.length > 1 ? teamReducer?.teamB?.name : ScreenConstants.SELECT_TEAM_B}</Text>
             <SelectTeamModal selectedTeamIndex={selectedTeamIndex} isVisible={isModalVisible} setVisible={setModalVisible} />
-            {teamReducer?.teamA?.name && teamReducer?.teamB?.name && <CustomButton title={ScreenConstants.NEXT} onPress={undefined} />}
+            {teamReducer?.teamA?.name && teamReducer?.teamB?.name && <CustomButton title={ScreenConstants.NEXT} onPress={() => navigation.navigate(NavigationConstants.SCHEDULE)} />}
         </View>
     )
 }

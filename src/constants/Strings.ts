@@ -5,4 +5,7 @@ export const ScreenConstants = {
     SELECT_TEAM_A: 'Select Team A',
     SELECT_TEAM_B: 'Select Team B',
     TOURNAMENT_TEAMS: 'Tournament Teams',
+    SCHEDULE_MATCH: 'Schedule Match',
+    MATCH_SCHEDULED: 'Match has been scheduled!',
+    AVAILABLE_TIME_SLOTS: 'Available Time Slots',
 }
