@@ -5,21 +5,24 @@ import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import SelectTeamScreen from '../screens/SelectTeamScreen/SelectTeamScreen';
 import { NavigationConstants } from './NavigationConstants';
 import { Provider } from 'react-redux';
-import store from '../store';
+import { persistor, store } from '../store';
 import ScheduleScreen from '../screens/ScheduleScreen/ScheduleScreen';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name={NavigationConstants.HOME} component={HomeScreen} />
-          <Stack.Screen name={NavigationConstants.SELECT_TEAM} component={SelectTeamScreen} />
-          <Stack.Screen name={NavigationConstants.SCHEDULE} component={ScheduleScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen name={NavigationConstants.HOME} component={HomeScreen} />
+            <Stack.Screen name={NavigationConstants.SELECT_TEAM} component={SelectTeamScreen} />
+            <Stack.Screen name={NavigationConstants.SCHEDULE} component={ScheduleScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 };

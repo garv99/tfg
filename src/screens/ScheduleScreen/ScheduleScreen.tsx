@@ -12,14 +12,13 @@ import { ToastAndroid, Platform, Alert } from 'react-native';
 import { NavigationConstants } from '../../navigation/NavigationConstants';
 import { useNavigation } from '@react-navigation/native'
 
-
 const ScheduleScreen = () => {
     const teamReducer: TeamState = useSelector((state: any) => state.teamReducer);
     const [city, setCity] = useState('');
     const [ground, setGround] = useState('');
     const [selectedTimeSlot, setSelectedTimeSlot] = React.useState("");
     const [isCalendarVisible, setCalendarVisible] = useState(false);
-    const [selectedDate, setSelectedDate] = useState(false);
+    const [selectedDate, setSelectedDate] = useState('');
     const navigation: any = useNavigation();
 
     //can be taken from api according to different dates.
