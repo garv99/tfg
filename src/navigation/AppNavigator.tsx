@@ -8,6 +8,8 @@ import { Provider } from 'react-redux';
 import { persistor, store } from '../store';
 import ScheduleScreen from '../screens/ScheduleScreen/ScheduleScreen';
 import { PersistGate } from 'redux-persist/integration/react';
+import SelectRoundScreen from '../screens/SelectRoundScreen/SelectRoundScreen';
+import MatchListScreen from '../screens/MatchListScreen/MatchListScreen';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +22,8 @@ const AppNavigator = () => {
             <Stack.Screen name={NavigationConstants.HOME} component={HomeScreen} />
             <Stack.Screen name={NavigationConstants.SELECT_TEAM} component={SelectTeamScreen} />
             <Stack.Screen name={NavigationConstants.SCHEDULE} component={ScheduleScreen} />
+            <Stack.Screen name={NavigationConstants.SELECT_ROUND} component={SelectRoundScreen} />
+            <Stack.Screen name={NavigationConstants.MATCH_LIST} component={MatchListScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </PersistGate>

@@ -5,7 +5,7 @@ import { ScreenConstants } from '../../constants/Strings'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import SelectTeamModal from '../../components/SelectTeamModal/SelectTeamModal'
 import { useSelector } from 'react-redux'
-import { TeamState } from '../../reducers/teamReducer'
+import { TeamState } from '../../redux/reducers/teamReducer'
 import { NavigationConstants } from '../../navigation/NavigationConstants'
 import { useNavigation } from '@react-navigation/native'
 

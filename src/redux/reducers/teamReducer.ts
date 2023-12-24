@@ -1,4 +1,4 @@
-import { SAVE_TEAM_A, SAVE_TEAM_B, saveTeamA, saveTeamB } from "../actions/teamAction";
+import { CLEAR_TEAMS, SAVE_TEAM_A, SAVE_TEAM_B, clearTeams, saveTeamA, saveTeamB } from "../actions/teamAction";
 
 export interface TeamState {
     teamA: {
@@ -22,7 +22,7 @@ const initialState: TeamState = {
     },
 };
 
-type TeamActionTypes = ReturnType<typeof saveTeamA | typeof saveTeamB>;
+type TeamActionTypes = ReturnType<typeof saveTeamA | typeof saveTeamB | typeof clearTeams>;
 
 const teamReducer = (state = initialState, action: TeamActionTypes): any => {
     switch (action.type) {
@@ -42,6 +42,8 @@ const teamReducer = (state = initialState, action: TeamActionTypes): any => {
                     image: action.payload.image,
                 },
             };
+        case CLEAR_TEAMS:
+            return { ...initialState, };
         default:
             return state;
     }

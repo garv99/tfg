@@ -3,7 +3,7 @@ import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native'
 import ReactNativeModal from 'react-native-modal'
 import { useDispatch } from 'react-redux';
 import { ScreenConstants } from '../../constants/Strings'
-import { saveTeamA, saveTeamB } from '../../actions/teamAction';
+import { saveTeamA, saveTeamB } from '../../redux/actions/teamAction';
 import { styles } from './SelectTeamModal.styles'
 
 interface ISelectTeamModal {

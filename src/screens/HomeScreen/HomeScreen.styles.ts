@@ -7,25 +7,6 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 15,
         backgroundColor: Colors.white,
     },
-    roundContainer: {
-        backgroundColor: Colors.lightBlue,
-        marginVertical: 7,
-        padding: 14,
-        paddingStart: 20,
-        borderRadius: 20,
-    },
-    activeRoundContainer: {
-        backgroundColor: Colors.lightBlue,
-        marginVertical: 7,
-        padding: 14,
-        paddingStart: 20,
-        borderRadius: 20,
-        borderColor: Colors.darkBlue,
-        borderWidth: 2,
-    },
-    roundText: {
-        fontSize: 18,
-    },
     headingText: {
         fontSize: 20,
         textAlign: 'center',
@@ -34,9 +15,16 @@ export const styles = StyleSheet.create({
         marginBottom: 40,
         marginTop: 20,
     },
-    subHeadingText: {
-        fontSize: 14,
-        color: Colors.gray,
-        marginBottom: 10,
+    listContainer: {
+        backgroundColor: Colors.darkBlue,
+        height: 100,
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginVertical: 10,
     },
+    listText: {
+        fontSize: 18,
+        color: Colors.white,
+    }
 })

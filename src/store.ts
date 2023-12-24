@@ -1,7 +1,8 @@
 import { createStore, combineReducers } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import teamReducer from './reducers/teamReducer';
+import teamReducer from './redux/reducers/teamReducer';
+import matchesReducer from './redux/reducers/matchesReducer';
 
 // Define your persistConfig
 const persistConfig = {
@@ -13,6 +14,7 @@ const persistConfig = {
 // Combine your reducers
 const rootReducer: any = combineReducers({
     teamReducer: teamReducer,
+    matchesReducer: matchesReducer,
 });
 
 // Wrap the root reducer with persistReducer

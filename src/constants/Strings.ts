@@ -8,4 +8,10 @@ export const ScreenConstants = {
     SCHEDULE_MATCH: 'Schedule Match',
     MATCH_SCHEDULED: 'Match has been scheduled!',
     AVAILABLE_TIME_SLOTS: 'Available Time Slots',
+    SCHEDULED_MATCHES: 'Scheduled Matches',
+    MATCH_SCHEDULED_ON: 'Match Scheduled on',
+    UPCOMING: 'UPCOMING',
+    DELETE_ALERT: 'Are you sure you want to delete match?',
+    CANCEL: 'Cancel',
+    DELETE: 'Delete',
 }

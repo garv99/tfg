@@ -1,18 +1,22 @@
 import React, { useState } from 'react'
 import { Image, View } from 'react-native'
+import { Alert } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native'
 import { styles } from './ScheduleScreen.styles'
-import { TeamState } from '../../reducers/teamReducer';
-import { useSelector } from 'react-redux';
-import { RadioButton, TextInput } from 'react-native-paper';
+import { TeamState } from '../../redux/reducers/teamReducer';
+import { TextInput } from 'react-native-paper';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import { SelectList } from 'react-native-dropdown-select-list';
 import CalendarComponent from '../../components/CalendarComponent/CalendarComponent';
 import { ScreenConstants } from '../../constants/Strings';
-import { ToastAndroid, Platform, Alert } from 'react-native';
 import { NavigationConstants } from '../../navigation/NavigationConstants';
-import { useNavigation } from '@react-navigation/native'
+import { Match, addMatch } from '../../redux/actions/MatchesAction';
+import uuid from 'react-native-uuid';
+import { clearTeams } from '../../redux/actions/teamAction';
 
 const ScheduleScreen = () => {
+    const dispatch = useDispatch<any>();
     const teamReducer: TeamState = useSelector((state: any) => state.teamReducer);
     const [city, setCity] = useState('');
     const [ground, setGround] = useState('');
@@ -27,6 +31,22 @@ const ScheduleScreen = () => {
         { key: '2', value: '10AM - 11AM' },
     ]
 
+    const ScheduleMatchBtnHandler = () => {
+        dispatch(clearTeams())
+        const payload: Match = {
+            id: uuid.v4(),
+            city: city,
+            ground: ground,
+            date: selectedDate,
+            time_slot: selectedTimeSlot,
+            team_A_name: teamReducer?.teamA?.name,
+            team_B_name: teamReducer?.teamB?.name,
+        }
+        dispatch(addMatch(payload));
+        Alert.alert(ScreenConstants.MATCH_SCHEDULED);
+        navigation.navigate(NavigationConstants.HOME);
+    }
+
     return (
         <View style={styles.parentContainer}>
             <View style={styles.teamsContainer}>
@@ -40,7 +60,6 @@ const ScheduleScreen = () => {
                     style={styles.teamImage}
                     source={teamReducer?.teamB?.image} />
             </View>
-
             <TextInput
                 label="City/Town"
                 mode='outlined'
@@ -63,7 +82,6 @@ const ScheduleScreen = () => {
                 editable={false}
                 style={styles.textInput}
             />
-
             <CalendarComponent
                 isVisible={isCalendarVisible}
                 setVisible={setCalendarVisible}
@@ -78,8 +96,7 @@ const ScheduleScreen = () => {
                 save="value"
             />
             {city && ground && selectedDate && selectedTimeSlot && <CustomButton title={ScreenConstants.SCHEDULE_MATCH} onPress={() => {
-                Alert.alert(ScreenConstants.MATCH_SCHEDULED);
-                navigation.navigate(NavigationConstants.HOME);
+                ScheduleMatchBtnHandler()
             }} />}
         </View>
     )
